@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\DisplayController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +16,5 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/',[DisplayController::class,'create']);

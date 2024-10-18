@@ -9,6 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'マッチングサービス') }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -19,6 +20,12 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+        .no-wrap {white-space: nowrap; /* 折り返さない */}
+        .large-text {font-size: 1.5rem; /* フォントサイズを大きく設定 */}
+        .space {margin-right: 2rem; /* スペースを調整 */}
+        .nav-card {padding: 20px; /* 内側の余白 */ border-radius: 10px; /* 角を丸く */}
+        </style>
     @yield('stylesheet')
 </head>
 
@@ -37,7 +44,7 @@
                 <span class="my-navbar-item">{{ Auth::user()->name }}</span>
                 /
                 <a href="#" id="logout" class="my-navbar-item">ログアウト</a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">
+                <form id="logout-form" action="" method="POST" style="display:none;">
         @csrf
     </form>
     <script>
@@ -47,9 +54,9 @@
         });
         </script>
         @else
-        <a class="my-navbar-item" href="{{ route('login') }}">ログイン</a>
+        <a class="my-navbar-item" href="">ログイン</a>
                     /
-                    <a class="my-navbar-item" href="{{ route('register') }}">会員登録</a>
+                    <a class="my-navbar-item" href="">会員登録</a>
                     @endif
             </div>
         </nav>
