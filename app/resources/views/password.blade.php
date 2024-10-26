@@ -9,7 +9,7 @@
           <div class="card-title text-center large-text">パスワード再設定</div>
         </div>
         <div class="card-body">
-          <form action="" method="POST">
+          <form action="{{ route('reset.mail') }}" method="POST">
             @csrf
             <div class="d-flex justify-content-around">
               <label for="email" class="col-sm-2 col-form-label  no-wrap">メールアドレス<span class="text-danger">*</span></label>

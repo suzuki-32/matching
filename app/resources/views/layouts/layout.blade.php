@@ -13,6 +13,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script>function goBack() {window.history.back();}</script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -21,11 +22,42 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <style>
-        .no-wrap {white-space: nowrap; /* 折り返さない */}
-        .large-text {font-size: 1.5rem; /* フォントサイズを大きく設定 */}
-        .space {margin-right: 2rem; /* スペースを調整 */}
-        .nav-card {padding: 20px; /* 内側の余白 */ border-radius: 10px; /* 角を丸く */}
-        </style>
+        .no-wrap {
+            white-space: nowrap;
+            /* 折り返さない */
+        }
+
+        .large-text {
+            font-size: 1.5rem;
+            /* フォントサイズを大きく設定 */
+        }
+
+        .space {
+            margin-right: 2rem;
+            /* スペースを調整 */
+        }
+
+        .nav-card {
+            padding: 20px;
+            /* 内側の余白 */
+            border-radius: 10px;
+            /* 角を丸く */
+        }
+
+        .narrow-table {
+            max-width: 600px;
+            /* テーブルの最大幅を設定 */
+            margin: auto;
+            /* 中央寄せ */
+        }
+
+        .custom-hr {
+            border-top: 2px solid black;
+            /* 線の太さと色を変更 */
+            margin: 20px 0;
+            /* 上下のマージン */
+        }
+    </style>
     @yield('stylesheet')
 </head>
 
@@ -45,19 +77,19 @@
                 /
                 <a href="#" id="logout" class="my-navbar-item">ログアウト</a>
                 <form id="logout-form" action="" method="POST" style="display:none;">
-        @csrf
-    </form>
-    <script>
-        document.getElementById('logout').addEventListener('click',function(event){
-            event.preventDefault();
-            document.getElementById('logout-form').submit();
-        });
-        </script>
-        @else
-        <a class="my-navbar-item" href="">ログイン</a>
-                    /
-                    <a class="my-navbar-item" href="">会員登録</a>
-                    @endif
+                    @csrf
+                </form>
+                <script>
+                    document.getElementById('logout').addEventListener('click', function(event) {
+                        event.preventDefault();
+                        document.getElementById('logout-form').submit();
+                    });
+                </script>
+                @else
+                <a class="my-navbar-item" href="">ログイン</a>
+                /
+                <a class="my-navbar-item" href="">会員登録</a>
+                @endif
             </div>
         </nav>
         @yield('content')

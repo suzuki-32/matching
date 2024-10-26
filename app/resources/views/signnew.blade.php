@@ -9,7 +9,7 @@
                     <div class="card-title text-center large-text">新規登録</div>
                 </div>
                 <div class="card-body">
-                    <form action="" method="POST">
+                    <form action="{{ route('sign.up') }}" method="POST">
                         <div class="d-flex justify-content-around">
                             <img src="https://via.placeholder.com/60" alt="ユーザー名" class="user-image">
                         </div>
@@ -18,7 +18,7 @@
                         <div class="d-flex justify-content-around">
                             <label for="name" class="col-sm-2 col-form-label  no-wrap space">ユーザー名<span class="text-danger">*</span></label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" id="email" name="email" value="{{ old('email') }}" required />
+                                <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required />
                             </div>
                         </div>
                         <br>
@@ -39,7 +39,7 @@
                         <div class="d-flex justify-content-around">
                             <label for="password2" class="col-sm-2 col-form-label  no-wrap space">新しいパスワード(確認)<span class="text-danger">*</span></label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" id="email" name="email" value="{{ old('email') }}" required />
+                                <input type="text" class="form-control" id="password2" name="password2" value="{{ old('password2') }}" required />
                             </div>
                         </div>
                         <br>

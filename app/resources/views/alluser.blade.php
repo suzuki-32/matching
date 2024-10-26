@@ -33,12 +33,14 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @foreach($users as $user)
                     <tr>
-                        <td>1</td>
-                        <td><a href="ページのURL">ユーザー名</a></td>
-                        <td>3</td>
-                        <td>4</td>
+                        <td>{{ $user['name'] }}</td>
+                        <td><a href="ページのURL">{{ $user['name'] }}</a></td>
+                        <td></td>
+                        <td></td>
                     </tr>
+                    @endforeach
                 </tbody>
             </table>
             <div class="d-flex flex-row-reverse">

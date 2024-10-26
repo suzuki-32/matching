@@ -9,7 +9,7 @@
           <div class="card-title text-center large-text">新規登録</div>
         </div>
         <div class="card-body">
-          <form action="" method="POST">
+          <form action="{{ route('login')}}" method="GET">
             @csrf
             <div class="card-title text-center">新規登録が完了しました</div>
             <br>

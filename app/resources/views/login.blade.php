@@ -9,24 +9,24 @@
           <div class="card-title text-center large-text">ログイン</div>
         </div>
         <div class="card-body">
-          <form action="" method="POST">
+          <form action="{{ route('home') }}" method="GET">
             @csrf
             <div class="d-flex justify-content-around">
-              <label for="email" class="col-sm-2 col-form-label  no-wrap">メールアドレス</label>
+              <label for="email" class="col-sm-2 col-form-label no-wrap">メールアドレス</label>
               <div class="col-sm-8">
                 <input type="text" class="form-control" id="email" name="email" value="{{ old('email') }}" required />
               </div>
             </div>
             <br>
             <div class="d-flex justify-content-around">
-              <label for="password" class="col-sm-2 col-form-label  no-wrap">パスワード</label>
+              <label for="password" class="col-sm-2 col-form-label no-wrap">パスワード</label>
               <div class="col-sm-8">
                 <input type="password" class="form-control" id="password" name="password" required />
               </div>
             </div>
             <br>
             <div class="text-right">
-              <a href="">パスワード忘れた方はこちら</a>
+              <a href="{{ route('password.reset') }}">パスワード忘れた方はこちら</a>
             </div>
             <br>
             <div class="text-center">
@@ -34,13 +34,14 @@
             </div>
             <br>
             <div class="text-center">
-              <button type="submit" class="btn btn-primary">新規登録</button>
+              <a href="{{ route('sign.new') }}" class="btn btn-primary">新規登録</a>
             </div>
             <br>
             <div class="text-right">
-              <a href="">ログインせずに始める</a>
+              <a href="{{ route('home') }}">ログインせずに始める</a>
             </div>
           </form>
+        </div>
       </nav>
     </div>
   </div>
