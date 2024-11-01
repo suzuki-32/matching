@@ -9,7 +9,7 @@
           <div class="card-title text-center large-text">ログイン</div>
         </div>
         <div class="card-body">
-          <form action="{{ route('home') }}" method="GET">
+          <form action="{{ route('home') }}" method="POST">
             @csrf
             <div class="d-flex justify-content-around">
               <label for="email" class="col-sm-2 col-form-label no-wrap">メールアドレス</label>

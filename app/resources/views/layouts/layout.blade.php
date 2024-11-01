@@ -13,7 +13,11 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script>function goBack() {window.history.back();}</script>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -75,8 +79,10 @@
                 @if(Auth::check())
                 <span class="my-navbar-item">{{ Auth::user()->name }}</span>
                 /
+                <a href="{{ route('') }}" class="my-navbar-item">マイページ</a>
+                /
                 <a href="#" id="logout" class="my-navbar-item">ログアウト</a>
-                <form id="logout-form" action="" method="POST" style="display:none;">
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">
                     @csrf
                 </form>
                 <script>
@@ -86,11 +92,12 @@
                     });
                 </script>
                 @else
-                <a class="my-navbar-item" href="">ログイン</a>
+                <a class="my-navbar-item" href="{{ route('login') }}">ログイン</a>
                 /
-                <a class="my-navbar-item" href="">会員登録</a>
+                <a class="my-navbar-item" href="{{ route('sign.new') }}">新規登録</a>
                 @endif
             </div>
+
         </nav>
         @yield('content')
     </div>

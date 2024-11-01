@@ -9,28 +9,36 @@
                 <tbody>
                     <tr>
                         <td>内容</td>
-                        <td><textarea class="form-control"></textarea></td>
+                        <td>{{ $detail }}</td>
                     </tr>
                     <tr>
                         <td>電話番号</td>
-                        <td><input type="tel"></td>
+                        <td>{{ $phone }}</td>
                     </tr>
                     <tr>
                         <td>メールアドレス</td>
-                        <td><input type="email" required></td>
+                        <td>{{ $email }}</td>
                     </tr>
                     <tr>
                         <td>希望納期</td>
-                        <td><input type="date"></td>
+                        <td>{{ $DueDate }}</td>
                     </tr>
                 </tbody>
             </table>
             <br>
-            <div class="d-flex justify-content-center">
-                <button type="button" class="btn btn-primary">申請する</button>
-            </div>
+            <form action="{{ route('request') }}" method="POST">
+                @csrf
+                <input type="hidden" name="detail" value="{{ $detail }}">
+                <input type="hidden" name="phone" value="{{ $phone }}">
+                <input type="hidden" name="email" value="{{ $email }}">
+                <input type="hidden" name="DueDate" value="{{ $DueDate }}">
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary">申請する</button>
+                </div>
+            </form>
         </nav>
     </div>
 </div>
+
 
 @endsection

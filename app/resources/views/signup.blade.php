@@ -6,50 +6,53 @@
         <div class="col col-md-offset-3 col-md-6">
             <nav class="card mt-5">
                 <div class="card">
-                    <div class="card-title text-center large-text">新規登録</div>
+                    <div class="card-title text-center large-text">新規登録確認</div>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('sign.fin')}}" method="POST">
-                        <div class="d-flex justify-content-around">
-                            <img src="https://via.placeholder.com/60" alt="ユーザー名" class="user-image">
-                        </div>
-                        <br>
+                    <form action="{{ route('sign') }}" method="POST">
                         @csrf
                         <div class="d-flex justify-content-around">
-                            <label for="name" class="col-sm-2 col-form-label  no-wrap space">ユーザー名<span class="text-danger">*</span></label>
+                        <img src="{{ asset('storage/' . $image) }}" alt="プロフィール画像" class="img-fluid" style="max-width: 100px; max-height: 100px;">
+                        </div>
+                        <br>
+                        <div class="d-flex justify-content-around">
+                            <label for="name" class="col-sm-2 col-form-label no-wrap space">ユーザー名<span class="text-danger">*</span></label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" id="email" name="email" value="{{ old('email') }}" required />
+                                <p>{{ $name }}</p>
+                                <input type="hidden" name="name" value="{{ $name }}">
                             </div>
                         </div>
                         <br>
                         <div class="d-flex justify-content-around">
-                            <label for="email" class="col-sm-2 col-form-label  no-wrap space">メールアドレス<span class="text-danger">*</span></label>
+                            <label for="email" class="col-sm-2 col-form-label no-wrap space">メールアドレス<span class="text-danger">*</span></label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" id="email" name="email" value="{{ old('email') }}" required />
+                                <p>{{ $email }}</p>
+                                <input type="hidden" name="email" value="{{ $email }}">
                             </div>
                         </div>
                         <br>
                         <div class="d-flex justify-content-around">
-                            <label for="password" class="col-sm-2 col-form-label  no-wrap space">パスワード<span class="text-danger">*</span></label>
+                            <label for="image" class="col-sm-2 col-form-label no-wrap space">プロフィール画像<span class="text-danger">*</span></label>
                             <div class="col-sm-7">
-                                <input type="password" class="form-control" id="password" name="password" required />
-                            </div>
-                        </div>
-                        <br>
-                        <div class="d-flex justify-content-around">
-                            <label for="password2" class="col-sm-2 col-form-label  no-wrap space">新しいパスワード(確認)<span class="text-danger">*</span></label>
-                            <div class="col-sm-7">
-                                <input type="text" class="form-control" id="email" name="email" value="{{ old('email') }}" required />
+                                <img src="{{ asset('storage/' . $image) }}" alt="プロフィール画像" class="img-fluid" style="max-width: 100px; max-height: 100px;">
+                                <input type="hidden" name="image" value="{{ $image }}">
                             </div>
                         </div>
                         <br>
                         <div class="d-grid gap-2 d-md-block text-center">
-                            <button class="btn btn-secondary" onclick="goBack()">戻る</button>
+                            <button type="button" class="btn btn-secondary" onclick="goBack()">戻る</button>
                             <button type="submit" class="btn btn-primary">登録</button>
                         </div>
                     </form>
+                </div>
             </nav>
         </div>
     </div>
 </div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
 @endsection
