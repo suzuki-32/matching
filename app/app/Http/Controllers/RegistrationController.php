@@ -18,15 +18,18 @@ class RegistrationController extends Controller
         $danger = new Danger;
         $danger->user_id = $request->user_id;
         $danger->post_id = $request->post_id;
-        $danger->detail = $request->detail;
+        $danger->detail = $request->input('detail', '');
         $danger->save();
         return redirect('/');
     }
 
+    // 入力内容を確認画面に渡す
     public function requestcheck(Request $request)
     {
-        // 入力内容を確認画面に渡す
+        // 仮のID
+        $user_id = 1;
         return view('request', [
+            'user_id' => $user_id,
             'detail' => $request->input('detail'),
             'phone' => $request->input('phone'),
             'email' => $request->input('email'),
@@ -34,6 +37,7 @@ class RegistrationController extends Controller
         ]);
     }
 
+    //確認画面からホーム画面（DB保存）
     public function request(Request $request)
     {
         $application = new Application;
@@ -47,6 +51,7 @@ class RegistrationController extends Controller
         return redirect('/');
     }
 
+    //新規登録確認画面へ遷移
     public function signcheck(Request $request)
     {
         // バリデーション
@@ -54,18 +59,25 @@ class RegistrationController extends Controller
             'name' => 'required|string|max:10',
             'email' => 'required|email|unique:users',
             'password' => 'required|string|confirmed',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        // 確認画面に必要なデータを渡す
+        // 画像のパスを保存するための変数を初期化
+        $imagePath = null;
+        // 画像が送信されているか確認し、存在する場合は保存
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('images');
+        }
+
         return view('signup', [
             'name' => $validated['name'],
             'email' => $validated['email'],
             'password' => $validated['password'],
-            'image' => $validated['image'], // 画像パスを渡す
+            'image' => $imagePath, // 確認画面には保存された画像のパスを渡す
         ]);
     }
 
+    //新規登録確認画面からホーム画面（DB保存）
     public function sign(Request $request)
     {
         $user = new User;
@@ -74,12 +86,21 @@ class RegistrationController extends Controller
         $user->password = bcrypt($request->password);
         $user->image = $request->image;
         $user->save();
-
-        return redirect('/'); // 登録完了後のリダイレクト
+        return redirect('/');
     }
 
-
-
+    //マイページへ
+    public function mypage()
+    {
+        // // ログインしていない場合はログインページにリダイレクト
+        // if (!Auth::check()) {
+        //     return redirect()->route('logingo');
+        // }
+    
+        $user = Auth::user(); // ログインしているユーザーの情報を取得
+        return view('mypage', compact('user')); // 'mypage' ビューにユーザー情報を渡す
+    }
+    
 
 
 

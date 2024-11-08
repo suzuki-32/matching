@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('name',10);
             $table->string('email');
             $table->string('password');
-            $table->string('image');
+            $table->string('image')->nullable()->change();
             $table->tinyInteger('admins')->default(0);
             $table->tinyInteger('del_flg')->default(0);
             $table->timestamps();

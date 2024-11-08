@@ -28,6 +28,7 @@
             <br>
             <form action="{{ route('request') }}" method="POST">
                 @csrf
+                <input type="hidden" name="user_id" value="{{ $user_id }}">
                 <input type="hidden" name="detail" value="{{ $detail }}">
                 <input type="hidden" name="phone" value="{{ $phone }}">
                 <input type="hidden" name="email" value="{{ $email }}">

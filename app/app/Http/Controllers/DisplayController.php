@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Post;
-
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Password;
 use Illuminate\Validation\Rules\In;
 
 class DisplayController extends Controller
@@ -20,7 +21,7 @@ class DisplayController extends Controller
         ]);
     }
     //ポスト詳細画面
-    public function allpost(int $postID)
+    public function postall(int $postID)
     {
         $post = Post::findOrFail($postID); // IDが存在しない場合は404を返す
         return view('postdetail', compact('post'));
@@ -33,68 +34,94 @@ class DisplayController extends Controller
         return view('dangerpost', compact('post'));
     }
 
+    //投稿詳細から前画面に戻る
     public function request(int $postID)
     {
         $post = Post::findOrFail($postID); // IDが存在しない場合は404を返す
         return view('requestpost', compact('post'));
     }
 
-        public function login()
+    //ログイン画面へ
+    public function login()
     {
         return view('login');
     }
-        public function signnew()
+    //新規登録画面へ
+    public function signnew()
     {
         return view('signnew');
     }
-}
+    //ログアウト
+    public function logout()
+    {
+        Auth::logout();
+        return view('login');
+    }
+
+
+    public function logingo()
+    {
+        return view('logingo');
+    }
+
+    public function a()
+    {
+        return view('requestformedit');
+    }
 
 
 
 
 
-    // public function index(){
-    //     return view('mypage');
-    // }
-
-    // public function useredit()
-    // {
-    //     return view('useredit');
-    // }
-
-
-
-
-    // public function home()
-    // {
-    //     $user = Auth::user();
-    //     $user->save();        
-    //     return view('home');
-    // }
-
-    // public function password()
+    // //パスワードリセット
+    // // メールドレス入力画面
+    // public function passwordreset()
     // {
     //     return view('password');
     // }
-    // public function signnew()
+
+    // // パスワードリセットリンクをメールで送信
+    // public function sendResetLink(Request $request)
     // {
-    //     return view('signnew');
+    //     // バリデーション
+    //     $request->validate(['email' => 'required|email']);
+    //     // リセットリンクを送信
+    //     $response = Password::sendResetLink($request->only('email'));
+    //     // 成功メッセージ
+    //     if ($response == Password::RESET_LINK_SENT) {
+    //         return back()->with('status', trans($response));
+    //     }
+    //     // エラーメッセージ
+    //     return back()->withErrors(['email' => trans($response)]);
     // }
-    // public function signup(Request $request)
+
+    // // パスワード変更フォームを表示
+    // public function showResetForm(Request $request, $token)
+    // {
+    //     return view('newpass')->with(['token' => $token, 'email' => $request->email]);
+    // }
+
+    // // パスワードをリセット
+    // public function resetPassword(Request $request)
     // {
     //     $request->validate([
-    //         'name' => 'required|string|max:255',
-    //         'email' => 'required|email|unique:users,email',
-    //         'password' => 'required|string|min:8|confirmed',
+    //         'email' => 'required|email',
+    //         'password' => 'required|confirmed',
+    //         'token' => 'required'
     //     ]);
-    
-    //     return view('signup.confirm', [
-    //         'name' => $request->name,
-    //         'email' => $request->email,
-    //     ]);
+
+    //     // パスワードリセットを実行
+    //     $response = Password::reset($request->only('email', 'password', 'password_confirmation', 'token'), function ($user, $password) {
+    //         $user->password = Hash::make($password);
+    //         $user->save();
+    //     });
+
+    //     // 成功メッセージ
+    //     if ($response == Password::PASSWORD_RESET) {
+    //         return redirect()->route('login')->with('status', trans($response));
+    //     }
+
+    //     // エラーメッセージ
+    //     return back()->withErrors(['email' => trans($response)]);
     // }
-    
-    // public function signfin()
-    // {
-    //     return view('sign');
-    // }
+}

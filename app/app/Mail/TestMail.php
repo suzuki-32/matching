@@ -7,12 +7,9 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class PasswordResetMail extends Mailable
+class TestMail extends Mailable
 {
     use Queueable, SerializesModels;
-
-    public $token;
-    public $email;
 
     /**
      * Create a new message instance.
@@ -21,8 +18,7 @@ class PasswordResetMail extends Mailable
      */
     public function __construct()
     {
-        $this->token = $token;
-        $this->email = $email;
+        //
     }
 
     /**
@@ -32,10 +28,10 @@ class PasswordResetMail extends Mailable
      */
     public function build()
     {
-        return $this->view('resetmail')
-                    ->with([
-                        'token' => $this->token,
-                        'email' => $this->email,
-                    ]);
+        return $this
+            ->from('example@example.com')
+            ->subject('テスト送信完了')
+            ->view('emails.test');
     }
+    
 }

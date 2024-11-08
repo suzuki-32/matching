@@ -5,20 +5,28 @@
     <div class="row justify-content-center">
         <nav class="card mt-5 nav-card">
             <div class="d-flex justify-content-around">
-                <div class="p-2"><img src="https://via.placeholder.com/80" alt="ユーザー名" class="user-image"></div>
+                <div class="p-2">
+                    <img src="https://via.placeholder.com/80" alt="ユーザー名" class="user-image">
+                </div>
                 <table>
                     <tbody>
                         <tr>
                             <td>ユーザー名</td>
-                            <td><input type="text"></td>
+                            <td>
+                                <span>{{ $user->name }}</span>
+                            </td> 
                         </tr>
                         <tr>
                             <td>メールアドレス</td>
-                            <td><input type="email"></td>
+                            <td>
+                                <span>{{ $user->email }}</span>
+                            </td> 
                         </tr>
                         <tr>
                             <td>パスワード</td>
-                            <td><input type="password"></td>
+                            <td>
+                                <span>パスワードは表示できません</span>
+                            </td> 
                         </tr>
                     </tbody>
                 </table>
@@ -37,37 +45,12 @@
                         </div>
                     </div>
                 </a>
-                <a href="遷移先のURL" class="text-decoration-none">
-                    <div class="card">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">タイトル</h5>
-                        </div>
-                    </div>
-                </a>
-                <a href="遷移先のURL" class="text-decoration-none">
-                    <div class="card">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">タイトル</h5>
-                        </div>
-                    </div>
-                </a>
-                <a href="遷移先のURL" class="text-decoration-none">
-                    <div class="card">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">タイトル</h5>
-                        </div>
-                    </div>
-                </a>
             </div>
             <br>
             <div class="d-flex justify-content-center">
-                <button type="button" class="btn btn-primary">依頼投稿する</button>
+                <a href="" class="btn btn-primary">依頼投稿する</a>
             </div>
         </nav>
     </div>
 </div>
-
 @endsection

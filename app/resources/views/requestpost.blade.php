@@ -22,7 +22,7 @@
                 <table class="table table-bordered narrow-table">
                     <tbody>
                         <tr>
-                            <td>内容</td>
+                            <td>内容<span class="text-danger">*</span></td>
                             <td><textarea class="form-control" name="detail" required></textarea></td>
                         </tr>
                         <tr>
@@ -30,7 +30,7 @@
                             <td><input type="tel" name="phone" class="form-control"></td>
                         </tr>
                         <tr>
-                            <td>メールアドレス</td>
+                            <td>メールアドレス<span class="text-danger">*</span></td>
                             <td><input type="email" name="email" class="form-control" required></td>
                         </tr>
                         <tr>

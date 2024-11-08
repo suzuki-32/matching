@@ -79,9 +79,9 @@
                 @if(Auth::check())
                 <span class="my-navbar-item">{{ Auth::user()->name }}</span>
                 /
-                <a href="{{ route('') }}" class="my-navbar-item">マイページ</a>
+                <a href="" class="my-navbar-item">マイページ</a>
                 /
-                <a href="#" id="logout" class="my-navbar-item">ログアウト</a>
+                <a href="" id="logout" class="my-navbar-item">ログアウト</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display:none;">
                     @csrf
                 </form>

@@ -25,6 +25,9 @@
                 <div class="d-flex justify-content-evenly">
                     <button class="btn btn-primary">報告する</button>
                 </div>
+                <div class="text-right">
+                    <p>※ホーム画面に戻ります</p>
+                </div>
             </form>
         </nav>
     </div>

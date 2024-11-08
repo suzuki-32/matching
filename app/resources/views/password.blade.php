@@ -12,9 +12,9 @@
           <form action="{{ route('reset.mail') }}" method="POST">
             @csrf
             <div class="d-flex justify-content-around">
-              <label for="email" class="col-sm-2 col-form-label  no-wrap">メールアドレス<span class="text-danger">*</span></label>
+              <label for="email" class="col-sm-2 col-form-label no-wrap">メールアドレス<span class="text-danger">*</span></label>
               <div class="col-sm-8">
-                <input type="text" class="form-control" id="email" name="email" value="{{ old('email') }}" required/>
+                <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" required/>
               </div>
             </div>
             <br>
@@ -22,6 +22,7 @@
               <button type="submit" class="btn btn-primary">メール送信</button>
             </div>
           </form>
+        </div>
       </nav>
     </div>
   </div>

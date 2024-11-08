@@ -9,19 +9,21 @@
           <div class="card-title text-center large-text">パスワード再設定</div>
         </div>
         <div class="card-body">
-          <form action="" method="POST">
+          <form action="{{ route('password.update', $token) }}" method="POST">
             @csrf
+            <input type="hidden" name="token" value="{{ $token }}">
+            
             <div class="d-flex justify-content-around">
-              <label for="password" class="col-sm-2 col-form-label  no-wrap space">新しいパスワード<span class="text-danger">*</span></label>
-              <div class="col-sm-7">
-                <input type="text" class="form-control" id="email" name="email" value="{{ old('email') }}" required/>
+              <label for="password" class="col-sm-5 col-form-label no-wrap space">新しいパスワード<span class="text-danger">*</span></label>
+              <div class="col-sm-6">
+                <input type="password" class="form-control" id="password" name="password" required/>
               </div>
             </div>
             <br>
             <div class="d-flex justify-content-around">
-              <label for="password2" class="col-sm-2 col-form-label  no-wrap space">新しいパスワード(確認)<span class="text-danger">*</span></label>
-              <div class="col-sm-7">
-                <input type="text" class="form-control" id="email" name="email" value="{{ old('email') }}" required/>
+              <label for="password_confirmation" class="col-sm-5 col-form-label no-wrap space">新しいパスワード(確認)<span class="text-danger">*</span></label>
+              <div class="col-sm-6">
+                <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required/>
               </div>
             </div>
             <br>
@@ -29,6 +31,7 @@
               <button type="submit" class="btn btn-primary">登録</button>
             </div>
           </form>
+        </div>
       </nav>
     </div>
   </div>
